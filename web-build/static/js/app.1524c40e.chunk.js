@@ -1,0 +1,2 @@
+(this.webpackJsonp=this.webpackJsonp||[]).push([[0],{39:function(t,n,e){"use strict";e.d(n,"a",(function(){return i}));var r=e(62),c=e(5),o=e(56),s=e(20),a=e(19);function i(){return Object(a.jsxs)(s.a,{style:u.container,children:[Object(a.jsx)(o.a,{children:"Open up App.tsx to start working on your app!"}),Object(a.jsx)(r.a,{style:"auto"})]})}var u=c.a.create({container:{flex:1,backgroundColor:"#4b71bd",alignItems:"center",justifyContent:"center"}})},63:function(t,n,e){t.exports=e(86)}},[[63,1,2]]]);
+//# sourceMappingURL=app.1524c40e.chunk.js.map
