@@ -1,18 +1,31 @@
 import { Text, View, Button,TextInput, Image, ActivityIndicator, ScrollView, Modal, SafeAreaView } from "react-native";
 import { useState } from "react";
 import React from "react";
+import { ManagerHomePage } from "./Manager-home";
+import { EmployeeHomePage } from "./Employee-home";
+import { Employee } from "./Entities";
 
 
+export default function LoginView(props:{updateUser:Function}){
+
+    const [username,setUsername] = useState('')
+    const [password, setPassword] = useState('')
+
+    // async function login(){
+    //     await AsyncStorage.setItem("user",JSON.stringify({username,role:"Temp"}))
+    //     props.updateUser({username,role:"Temp"})
+    // }
 
 
-
-
-export function NavContainer(){
-
+function NavContainer(props:Employee){
+props.username
+props.password
     const [index, setIndex] = useState(0);
 
     const UserPassInput = () => {
-        const [username, onUsername] = React.useState();
+        const [
+            
+            username, onUsername] = React.useState();
         const [password, onPassword] = React.useState();
       
         return (
@@ -45,9 +58,10 @@ export function NavContainer(){
         switch (index) {
             case 0:{
                 return (
-                    <View><Text>Place Image above this somehow Welcome to Norwegian International Corporate Expense Management Systems
-                    Employee Login</Text>
-                    <UserPassInput/>
+                    <View><Text style={{fontSize:20, fontFamily:"Helvetica"}}>Welcome to Norwegian International Corporate Expense Management Systems</Text>
+                    {/* <UserPassInput/>
+                    <ManagerHomePage /> */}
+                    {/* <EmployeeHomePage setIndex={setIndex}/> */}
                     <Button onPress={()=>setIndex(1)} title="Login"></Button>
                     </View>)
             }
@@ -55,18 +69,24 @@ export function NavContainer(){
                 return (<View><Text>Manager Page</Text><Button onPress={()=>setIndex(0)} title="Page 2"></Button></View>)
 
             }
+            case 2:{
+                return(<View><Text>Employee Page</Text><Button onPress={()=>setIndex(0)} title="Default Page"></Button></View>)
+
+            }
         
-            default:{
-                return(<View><Text>Employee Page</Text><Button onPress={()=>setIndex(2)} title="Default Page"></Button></View>)
+            case 3:{
+                return(<View><Text>Create New Expense</Text><Button onPress={()=>setIndex(0)} title="Default Page"></Button></View>)
             }
             
         }
 
 
     }
-
-    return showNav();
+    return<View style={{backgroundColor:"#4b71bd", padding:5, height:800, width:1300, alignItems:"center",justifyContent:"center"}}> {showNav()}</View>
+    
 
     
 
-}//end NavContainer()
+}
+
+}//end NavContainer
