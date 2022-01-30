@@ -6,26 +6,22 @@ import { EmployeeHomePage } from "./Employee-home";
 import { Employee } from "./Entities";
 
 
-export default function LoginView(props:{updateUser:Function}){
+// export default function LoginView(){ //props:{updateUser:Function}
 
-    const [username,setUsername] = useState('')
-    const [password, setPassword] = useState('')
-
-    // async function login(){
-    //     await AsyncStorage.setItem("user",JSON.stringify({username,role:"Temp"}))
-    //     props.updateUser({username,role:"Temp"})
-    // }
+//     const [username,setUsername] = useState('')
+//     const [password, setPassword] = useState('')
 
 
-function NavContainer(props:Employee){
-props.username
-props.password
+
+export default function NavContainer(){//props:Employee
+
+    
+// props.username
+// props.password
     const [index, setIndex] = useState(0);
 
     const UserPassInput = () => {
-        const [
-            
-            username, onUsername] = React.useState();
+        const [username, onUsername] = React.useState();
         const [password, onPassword] = React.useState();
       
         return (
@@ -50,17 +46,18 @@ props.password
             />
           </SafeAreaView>
         );
-      };
+      
+    }
 
-
+    // function UpdateUser(props:Employee){}
 
     function showNav(){
         switch (index) {
             case 0:{
                 return (
                     <View><Text style={{fontSize:20, fontFamily:"Helvetica"}}>Welcome to Norwegian International Corporate Expense Management Systems</Text>
-                    {/* <UserPassInput/>
-                    <ManagerHomePage /> */}
+                     <UserPassInput/>
+                    {/* <ManagerHomePage /> */}
                     {/* <EmployeeHomePage setIndex={setIndex}/> */}
                     <Button onPress={()=>setIndex(1)} title="Login"></Button>
                     </View>)
@@ -85,8 +82,8 @@ props.password
     return<View style={{backgroundColor:"#4b71bd", padding:5, height:800, width:1300, alignItems:"center",justifyContent:"center"}}> {showNav()}</View>
     
 
-    
 
-}
 
 }//end NavContainer
+
+

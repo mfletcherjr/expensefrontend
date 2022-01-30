@@ -1,9 +1,12 @@
 import { Text, View, Button,TextInput, Image, ActivityIndicator, ScrollView, Modal, SafeAreaView } from "react-native";
 import { useState } from "react";
 import React from "react";
+import RequestHandler from "./Handler";
+import { Expense } from "./Entities";
 
 export function EmployeeHomePage(props){
     const setIndex:Function =props.setIndex;
+    const services:RequestHandler = props;
 
 
 /**
@@ -14,7 +17,7 @@ export function EmployeeHomePage(props){
     expenses array
     submitted expenses statuses
 */
-function EmployeeInfo(){
+function EmployeeInfo(uid:string){
 
 
 
@@ -31,7 +34,7 @@ function EmployeeInfo(){
     date to be auto-generated with Date in International format
 
 */
-function CreateExpense(){
+function CreateExpense(request:Expense){
 
 
 
