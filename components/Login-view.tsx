@@ -2,35 +2,39 @@ import { useState } from "react";
 import { TextInput, View, Text, Button ,SafeAreaView} from "react-native";
 import { EmployeeHomePage } from "./Employee-home";
 import { Employee } from "./Entities";
+import RequestHandler from "./Handler";
 import { ManagerHomePage } from "./Manager-home";
 //import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //ADAM STUFF
-export default function LoginView(props:{updateUser:Function}){
+export default function LoginView(props){
+
+    const {setIndex, loggedIn} = props;
 
     const [username,setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const handler = new RequestHandler();
 
-    // async function login(){
-    //     await AsyncStorage.setItem("user",JSON.stringify({username,role:"Temp"}))
-    //     props.updateUser({username,role:"Temp"})
-    // }
+    async function loginAttempt() {
+        
+        // logic to retrieve employee from backend
+        // attribute isManager will dictate whether or not
+        // loginAttempt will point to Mgr or Emp page
+        // upon success
+       const anEmployee = await handler.Login(username,password);
+       loggedIn(anEmployee);
+      // console.log(anEmployee);
+        if (anEmployee.isManager) {
+            //where we set the employee type
+            //render appropriate page response based on type
+            //console.log("Hello");
+            setIndex(1)
+        } else {
+            setIndex(2);
+        }
+        
+    }
 
-
-
-    
-    // return(<View>
-    //     <Text>username</Text>
-    //     <TextInput onChangeText={t=>setUsername(t)} placeholder="gatorfan"/>
-
-    //     <Text>Passowrd</Text>
-    //     <TextInput onChangeText={t=>setPassword(t)} placeholder="supersecret"/>
-    //     <Button onPress={login} title="LOGIN"/>
-
-    // </View>
-    
-    
-    // )
 return(
     <SafeAreaView>
             <TextInput 
@@ -41,7 +45,7 @@ return(
            // onChangeText={onUsername}
             value={username}
             placeholder="Example Username"
-            onChangeText={u=>this.setUsername({setUsername(username: string)})}
+            onChangeText={u=>setUsername(u)}
             />
             <TextInput
             style={{
@@ -49,25 +53,13 @@ return(
             }}  
             value= {password}
             placeholder="Example Password"
-            onChangeText={p=>this.setPassword({setPassword(password:string)})}
+            onChangeText={p=>setPassword(p)}
           
              
             />
-            
-            {/* hide the logic in the button? */}
-            <Button onPress={()=>setIndex(1)} title="Login"></Button>
-            {
-            if (!isManager) {
-                <EmployeeHomePage/>
-            } else {
-                <ManagerHomePage />
-            }
-            
-            
-            
-            
-            }
-           <Button onPress={()=>setIndex(1)} title="Login"></Button>
+         
+           
+           <Button onPress={loginAttempt} title="Login"></Button>
           </SafeAreaView>
 
 )
