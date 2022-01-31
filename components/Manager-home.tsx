@@ -1,9 +1,11 @@
 import { Text, View, Button,TextInput, Image, ActivityIndicator, ScrollView, Modal, SafeAreaView } from "react-native";
 import { useState } from "react";
+import RequestHandler from "./Handler";
 import React from "react";
 
 export function ManagerHomePage(){
-
+    const [empty, allEmployees] = useState("");
+    const [process, updated] = useState("");
 
 /** 
 takes in an expense and changes state
@@ -30,7 +32,6 @@ function ShowAllEmployees(){
 
 
 
-
 }//end showAllEmployees
 
 
@@ -41,8 +42,8 @@ function ShowAllEmployees(){
 
 
 
-return (
-    <View style={{alignItems:"stretch"}}>
+return (<View><Text>Manager Home Page</Text>
+    <View style={{backgroundColor:"#4b71bd", padding:5, height:500, width:1150, alignItems:"stretch",justifyContent:"center"}}>
         <View style={{flexDirection:"row"}}  >
             <View style={{flex:3,backgroundColor:"#72D6D8"}}> <Text>Id</Text></View>  
             <View style={{flex:1,backgroundColor:"#72D6D8"}}> <Text>First name</Text></View>
@@ -62,8 +63,7 @@ return (
     
     
     
-    
-</View>)
+    </View></View>)
 
 
 

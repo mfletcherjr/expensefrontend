@@ -15,18 +15,18 @@ export default class RequestHandler implements Handler{
         return response.data.employeeList;
     }
 
-    async approve(uid: string): Promise<string> {
+    async Approve(uid: string): Promise<string> {
         const body = {uid}
         const response = await axios.patch('http://localhost:5000/approve/:id',body);
         return response.data.message
         
     }
-    async reject(uid: string): Promise<string> {
+    async Reject(uid: string): Promise<string> {
         const body = {uid}
         const response = await axios.patch('http://localhost:5000/reject/:id',body);
         return response.data.message
     }
-    async createExpense(empId: string, request: Expense): Promise<Employee> {
+    async CreateExpense(empId: string, request: Expense): Promise<Employee> {
         const body = {empId, request}
         const response = await axios.patch('http://localhost:5000/expense/:id',body);
 

@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { TextInput, View, Text, Button ,SafeAreaView} from "react-native";
+import { EmployeeHomePage } from "./Employee-home";
+import { Employee } from "./Entities";
+import { ManagerHomePage } from "./Manager-home";
 //import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //ADAM STUFF
@@ -38,18 +41,36 @@ return(
            // onChangeText={onUsername}
             value={username}
             placeholder="Example Username"
+            onChangeText={u=>this.setUsername({setUsername(username: string)})}
             />
             <TextInput
             style={{
                 backgroundColor:'#ffffff'
-            }}
-            placeholder="Example Password"
-           // onChangeText={onPassword}
+            }}  
             value= {password}
+            placeholder="Example Password"
+            onChangeText={p=>this.setPassword({setPassword(password:string)})}
+          
              
             />
-           {/* <Button onPress={login} title="LOGIN"/> */}
+            
+            {/* hide the logic in the button? */}
+            <Button onPress={()=>setIndex(1)} title="Login"></Button>
+            {
+            if (!isManager) {
+                <EmployeeHomePage/>
+            } else {
+                <ManagerHomePage />
+            }
+            
+            
+            
+            
+            }
+           <Button onPress={()=>setIndex(1)} title="Login"></Button>
           </SafeAreaView>
 
 )
 }
+
+

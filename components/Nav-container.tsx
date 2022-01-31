@@ -20,7 +20,7 @@ export default function NavContainer(){//props:Employee
 // props.password
     const [index, setIndex] = useState(0);
 
-    const UserPassInput = () => {
+    const UserPassInput = (props:Employee) => {
         const [username, onUsername] = React.useState();
         const [password, onPassword] = React.useState();
       
@@ -31,13 +31,14 @@ export default function NavContainer(){//props:Employee
                 backgroundColor:'#ffffff'
             }}
               
-           // onChangeText={onUsername}
+           // onChangeText={onUsername}????
             value={username}
             placeholder="Example Username"
             />
             <TextInput
             style={{
-                backgroundColor:'#ffffff'
+                backgroundColor:'#ffffff',
+                
             }}
             placeholder="Example Password"
            // onChangeText={onPassword}
@@ -56,30 +57,41 @@ export default function NavContainer(){//props:Employee
             case 0:{
                 return (
                     <View><Text style={{fontSize:20, fontFamily:"Helvetica"}}>Welcome to Norwegian International Corporate Expense Management Systems</Text>
-                     <UserPassInput/>
+                    <UserPassInput />
                     {/* <ManagerHomePage /> */}
                     {/* <EmployeeHomePage setIndex={setIndex}/> */}
                     <Button onPress={()=>setIndex(1)} title="Login"></Button>
                     </View>)
             }
-            case 1:{
-                return (<View><Text>Manager Page</Text><Button onPress={()=>setIndex(0)} title="Page 2"></Button></View>)
+            case 1:{ 
+
+                
+                return (
+                <View>
+                        <ManagerHomePage/>
+                
+                
+                
+                
+                
+                
+                </View>)
 
             }
             case 2:{
-                return(<View><Text>Employee Page</Text><Button onPress={()=>setIndex(0)} title="Default Page"></Button></View>)
+                return(<View><Text>Employee Page</Text><Button onPress={()=>setIndex(2)} title="Default Page"></Button></View>)
 
             }
         
             case 3:{
-                return(<View><Text>Create New Expense</Text><Button onPress={()=>setIndex(0)} title="Default Page"></Button></View>)
+                return(<View><Text>Create New Expense</Text><Button onPress={()=>setIndex(3)} title="Default Page"></Button></View>)
             }
             
         }
 
 
     }
-    return<View style={{backgroundColor:"#4b71bd", padding:5, height:800, width:1300, alignItems:"center",justifyContent:"center"}}> {showNav()}</View>
+    return<View style={{backgroundColor:"#4b71bd", padding:5, height:800, width:1300, alignItems:"center",justifyContent:"center"}}>{showNav()} </View>
     
 
 

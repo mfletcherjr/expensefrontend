@@ -14,9 +14,9 @@ export interface Handler{
     
 Login(username:string, password:string):Promise<Employee>
 GetRoster():Promise<Employee[]>
-approve(uid:string):Promise<string>
-reject(uid:string):Promise<string>
-createExpense(empId:string,request:Expense):Promise<Employee>
+Approve(uid:string):Promise<string>
+Reject(uid:string):Promise<string>
+CreateExpense(empId:string,request:Expense):Promise<Employee>
 }
 
 
